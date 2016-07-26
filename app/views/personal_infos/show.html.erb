@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Heigth:</strong>
+  <%= @personal_info.heigth %>
+</p>
+
+<p>
+  <strong>Weigth:</strong>
+  <%= @personal_info.weigth %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @personal_info.person %>
+</p>
+
+<%= link_to 'Edit', edit_personal_info_path(@personal_info) %> |
+<%= link_to 'Back', personal_infos_path %>

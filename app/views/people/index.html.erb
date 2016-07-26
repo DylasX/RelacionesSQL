@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing People</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Age</th>
+      <th>Login</th>
+      <th>Password</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.first_name %></td>
+        <td><%= person.last_name %></td>
+        <td><%= person.age %></td>
+        <td><%= person.login %></td>
+        <td><%= person.password %></td>
+        <% person.hobbies.each do |t|  %>
+
+          <td>
+            <%= t.name %>
+          </td>
+
+      <%  end %>
+
+      <% person.approx_salaries.each do |y| %>
+
+      <td>
+        <%= y.min_salary %>
+      </td>
+
+      <% end %>
+
+        <td><%= link_to 'Show', person %></td>
+        <td><%= link_to 'Edit', edit_person_path(person) %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_tag(people_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search People" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Person', new_person_path %>
